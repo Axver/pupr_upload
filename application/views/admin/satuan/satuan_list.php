@@ -89,23 +89,16 @@ else
 					<!-- Nav Item - User Information -->
 					<li class="nav-item dropdown no-arrow">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama') ?></span>
 							<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
 						</a>
 						<!-- Dropdown - User Information -->
 						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="#">
+							 <a class="dropdown-item" href="#">
 								<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-								Profile
+								Ubah Profil
 							</a>
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-								Settings
-							</a>
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-								Activity Log
-							</a>
+							 
 							<div class="dropdown-divider"></div>
 
 						</div>
@@ -135,7 +128,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Today Overview</h6>
+								<h6 class="m-0 font-weight-bold text-primary">Daftar Satuan Bahan Alat</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -147,7 +140,7 @@ else
 							<div class="card-body">
 								<div class="row" style="margin-bottom: 10px">
 									<div class="col-md-4">
-										<?php echo anchor(site_url('satuan/create'),'Create', 'class="btn btn-primary"'); ?>
+										<?php echo anchor(site_url('satuan/create'),'Buat', 'class="btn btn-primary"'); ?>
 									</div>
 									<div class="col-md-4 text-center">
 										<div style="margin-top: 8px" id="message">
@@ -169,7 +162,7 @@ else
 								<?php
 							}
 							?>
-                          <button class="btn btn-primary" type="submit">Search</button>
+                          <button class="btn btn-primary" type="submit">Cari</button>
                         </span>
 											</div>
 										</form>
@@ -178,8 +171,8 @@ else
 								<table class="table table-bordered" style="margin-bottom: 10px">
 									<tr>
 										<th>No</th>
-										<th>Satuan</th>
-										<th>Action</th>
+										<th>Nama Satuan</th>
+										<th>Aksi</th>
 									</tr><?php
 									foreach ($satuan_data as $satuan)
 									{
@@ -203,7 +196,7 @@ else
 								</table>
 								<div class="row">
 									<div class="col-md-6">
-										<a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+										<a href="#" class="btn btn-primary">Jumlah Data : <?php echo $total_rows ?></a>
 									</div>
 									<div class="col-md-6 text-right">
 										<?php echo $pagination ?>

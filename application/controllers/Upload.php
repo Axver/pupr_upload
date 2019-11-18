@@ -17,7 +17,7 @@ class Upload extends CI_Controller{
 
 	public function aksi_upload($id){
 		$config['upload_path']          = './gambar/';
-		$config['allowed_types']        = 'gif|jpg|png';
+		$config['allowed_types']        = 'gif|jpg|png|jpeg';
 		$config['max_size']             = 10000;
 		$config['max_width']            = 10000;
 		$config['max_height']           = 10000;

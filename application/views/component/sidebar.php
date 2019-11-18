@@ -3,9 +3,9 @@
 	<!-- Sidebar - Brand -->
 	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin'); ?>">
 		<div class="sidebar-brand-icon rotate-n-15">
-			<i class="fas fa-laugh-wink"></i>
+			<i class="far fa-building"></i>
 		</div>
-		<div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+		<div class="sidebar-brand-text mx-3">Sistem Pelaporan<sup>PUPR</sup></div>
 	</a>
 
 	<!-- Divider -->
@@ -29,7 +29,7 @@
 		</a>
 		<div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Daftar Laporan</h6>
+				<h6 class="collapse-header"></h6>
 				<a class="collapse-item" href="<?php echo base_url('paket') ?>">Paket</a>
 
 			</div>
@@ -39,6 +39,7 @@
 
 
 	<!-- Nav Item - Pages Collapse Menu -->
+
 <!--	<li class="nav-item">-->
 <!--		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo12" aria-expanded="true" aria-controls="collapseTwo">-->
 <!--			<i class="fas fa-fw fa-cog"></i>-->
@@ -58,6 +59,7 @@
 <!--		</div>-->
 <!--	</li>-->
 
+
 	<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo121" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
@@ -65,7 +67,7 @@
 		</a>
 		<div id="collapseTwo121" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Setting</h6>
+				<h6 class="collapse-header"></h6>
 				<a class="collapse-item" href="<?php echo base_url('pengawasan') ?>">Pengawasan</a>
 
 
@@ -78,15 +80,15 @@
 	<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo11" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
-			<span>Setting</span>
+			<span>Pengaturan</span>
 		</a>
 		<div id="collapseTwo11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Setting</h6>
+				<h6 class="collapse-header">Pengaturan</h6>
 				<a class="collapse-item" href="<?php echo base_url('jenis_bahan_alat') ?>">Jenis Alat Bahan</a>
 				<a class="collapse-item" href="<?php echo base_url('jenis_pekerjaan') ?>">Jenis Pekerjaan</a>
 				<a class="collapse-item" href="<?php echo base_url('satuan') ?>">Satuan</a>
-				<a class="collapse-item" href="<?php echo base_url('account') ?>">Users</a>
+				<a class="collapse-item" href="<?php echo base_url('account') ?>">Pengguna</a>
 				<a class="collapse-item" href="<?php echo base_url('konfigurasi') ?>">Tanda Tangan</a>
 
 

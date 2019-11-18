@@ -65,23 +65,16 @@
 					<!-- Nav Item - User Information -->
 					<li class="nav-item dropdown no-arrow">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama') ?></span>
 							<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
 						</a>
 						<!-- Dropdown - User Information -->
 						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="#">
+							 <a class="dropdown-item" href="#">
 								<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-								Profile
+								Ubah Profil
 							</a>
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-								Settings
-							</a>
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-								Activity Log
-							</a>
+							 
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
 								<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -127,7 +120,7 @@
 
 								<div class="row" style="margin-bottom: 10px">
 									<div class="col-md-4">
-										<?php echo anchor(site_url('paket/create'),'Create', 'class="btn btn-primary"'); ?>
+										<?php echo anchor(site_url('paket/create'),'Buat', 'class="btn btn-primary"'); ?>
 									</div>
 									<div class="col-md-4 text-center">
 										<div style="margin-top: 8px" id="message">
@@ -149,7 +142,7 @@
 								<?php
 							}
 							?>
-                          <button class="btn btn-primary" type="submit">Search</button>
+                          <button class="btn btn-primary" type="submit">Cari</button>
                         </span>
 											</div>
 										</form>
@@ -159,7 +152,7 @@
 									<tr>
 										<th>No</th>
 										<th>Nama</th>
-										<th>Action</th>
+										<th>Aksi</th>
 									</tr><?php
 									foreach ($paket_data as $paket)
 									{
@@ -169,11 +162,11 @@
 											<td><?php echo $paket->nama ?></td>
 											<td style="text-align:center" width="200px">
 												<?php
-												echo anchor(site_url('paket/read/'.$paket->id_paket),'Read');
+												echo anchor(site_url('paket/read/'.$paket->id_paket),'Lihat');
 												echo ' | ';
-												echo anchor(site_url('paket/update/'.$paket->id_paket),'Update');
+												echo anchor(site_url('paket/update/'.$paket->id_paket),'Ubah');
 												echo ' | ';
-												echo anchor(site_url('paket/delete/'.$paket->id_paket),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+												echo anchor(site_url('paket/delete/'.$paket->id_paket),'Hapus','onclick="javasciprt: return confirm(\'Apakah anda yakin ?\')"');
 												?>
 											</td>
 										</tr>
@@ -183,7 +176,7 @@
 								</table>
 								<div class="row">
 									<div class="col-md-6">
-										<a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+										<a href="#" class="btn btn-primary">Jumlah Data : <?php echo $total_rows ?></a>
 									</div>
 									<div class="col-md-6 text-right">
 										<?php echo $pagination ?>

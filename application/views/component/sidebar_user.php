@@ -3,9 +3,9 @@
 	<!-- Sidebar - Brand -->
 	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('user'); ?>">
 		<div class="sidebar-brand-icon rotate-n-15">
-			<i class="fas fa-laugh-wink"></i>
+			<i class="far fa-building"></i>
 		</div>
-		<div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+		<div class="sidebar-brand-text mx-3">Sistem Pelaporan <sup>PUPR</sup></div>
 	</a>
 
 	<!-- Divider -->
@@ -29,7 +29,7 @@
 		</a>
 		<div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Daftar Laporan</h6>
+				<h6 class="collapse-header"></h6>
 				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket Anda</a>
 
 			</div>
@@ -40,12 +40,11 @@
 	<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo113" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
-			<span>Paket User</span>
+			<span>Laporan User</span>
 		</a>
 		<div id="collapseTwo113" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Paket User</h6>
-				<a class="collapse-item" href="<?php echo base_url('user') ?>">Paket</a>
+				<h6 class="collapse-header"></h6>				
 				<a class="collapse-item" href="<?php echo base_url('user_perencanaan') ?>">Laporan Perencanaan</a>
 				<a class="collapse-item" href="<?php echo base_url('user_harian_data') ?>">Laporan Harian</a>
 				<a class="collapse-item" href="<?php echo base_url('user_pengawasan_data') ?>">Laporan Pengawasan</a>
@@ -62,11 +61,11 @@
 	<li class="nav-item">
 		<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo114" aria-expanded="true" aria-controls="collapseTwo">
 			<i class="fas fa-fw fa-cog"></i>
-			<span>Generate</span>
+			<span>Laporan Mingguan Bulanan</span>
 		</a>
 		<div id="collapseTwo114" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 			<div class="bg-white py-2 collapse-inner rounded">
-				<h6 class="collapse-header">Generate</h6>
+				<h6 class="collapse-header"></h6>
 				<a class="collapse-item" href="<?php echo base_url('generate_minggu') ?>">Laporan Mingguan</a>
 				<a class="collapse-item" href="<?php echo base_url('generate_bulan') ?>">Laporan Bulanan</a>
 <!--				<a class="collapse-item" href="--><?php //echo base_url('generate_catur') ?><!--">Laporan Caturwulan</a>-->

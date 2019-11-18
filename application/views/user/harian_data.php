@@ -89,23 +89,16 @@ else
 					<!-- Nav Item - User Information -->
 					<li class="nav-item dropdown no-arrow">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama') ?></span>
 							<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
 						</a>
 						<!-- Dropdown - User Information -->
 						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-							<a class="dropdown-item" href="#">
+							 <a class="dropdown-item" href="#">
 								<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-								Profile
+								Ubah Profil
 							</a>
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-								Settings
-							</a>
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-								Activity Log
-							</a>
+							 
 							<div class="dropdown-divider"></div>
 
 						</div>
@@ -151,8 +144,8 @@ else
 									<thead>
 									<tr>
 										<th>Tanggal</th>
-										<th>View</th>
-										<th>Edit</th>
+										<th>Lihat</th>
+										<th>Ubah</th>
 										<th>Upload</th>
 
 									</tr>
@@ -173,9 +166,11 @@ else
 										?>
 										<tr>
 											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
-											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">View</button></td>
-											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Edit</button></td>
-											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Image</button></td>
+
+											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Lihat</button></td>
+											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Ubah</button></td>
+											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Foto</button></td>
+
 										</tr>
 									<?php
 
