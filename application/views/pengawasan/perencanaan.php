@@ -89,16 +89,23 @@ else
 					<!-- Nav Item - User Information -->
 					<li class="nav-item dropdown no-arrow">
 						<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('nama') ?></span>
+							<span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
 							<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
 						</a>
 						<!-- Dropdown - User Information -->
 						<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-							 <a class="dropdown-item" href="#">
+							<a class="dropdown-item" href="#">
 								<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-								Ubah Profil
+								Profile
 							</a>
-							 
+							<a class="dropdown-item" href="#">
+								<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+								Settings
+							</a>
+							<a class="dropdown-item" href="#">
+								<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+								Activity Log
+							</a>
 							<div class="dropdown-divider"></div>
 
 						</div>
@@ -128,7 +135,7 @@ else
 						<div class="card shadow mb-12">
 							<!-- Card Header - Dropdown -->
 							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-								<h6 class="m-0 font-weight-bold text-primary">Pengawasan User <?php echo $this->uri->segment('3') ?></h6>
+								<h6 class="m-0 font-weight-bold text-primary">Laporan Pengawasan Users</h6>
 								<div class="dropdown no-arrow">
 									<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -139,60 +146,69 @@ else
 							<!-- Card Body -->
 							<div class="card-body">
 
-								<input type="hidden" id="id_user" value="<?php echo $this->uri->segment("3"); ?>">
-								<?php $this->load->view('admin_content/read_pengawasan');?>
 
-<!--								Data Created By User-->
-								<b>Data Created By User : </b>
 
-								<b style="color:red"> <?php echo $jumlah['jumlah'][0]->ip ?></b>
+								<table id="example" class="display" style="width:100%">
+									<thead>
+									<tr>
+										<th>Id</th>
+										<th>Paket</th>
+										<th>lokasi</th>
+										<th>jenis pekerjaan</th>
+										<th>panjang penanganan</th>
+										<th>Lihat</th>
 
-								<br/>
-								<br/>
-<!--								<b>Detil Keseluruhan</b>-->
-								<canvas id="myChart"></canvas>
 
-<!--								<script>-->
-<!--//									Using AJAX TO Get COunt Data From Laporan-->
-<!---->
-<!--let id_user=$("#id_user").val();-->
-<!--alert(id_user);-->
-<!--$.ajax({-->
-<!--    type: "POST",-->
-<!--    url: "http://localhost/pupr_new/pengawasan/hitung/",-->
-<!--    data: {"id": id_user},-->
-<!--    dataType: "text",-->
-<!--    cache:false,-->
-<!--    success:-->
-<!--        function(data){-->
-<!--            data=JSON.parse(data);-->
-<!--            console.log(data);-->
-<!--            console.log(data.harian[0].harian);-->
-<!--            var ctx = document.getElementById('myChart').getContext('2d');-->
-<!--            var chart = new Chart(ctx, {-->
-<!--                // The type of chart we want to create-->
-<!--                type: 'line',-->
-<!---->
-<!--                // The data for our dataset-->
-<!--                data: {-->
-<!--                    labels: ['Paket', 'Laporan Harian', 'Lapoan Pengawasan', 'Laporan Perencanaan'],-->
-<!--                    datasets: [{-->
-<!--                        label: 'Jumlah Laporan',-->
-<!--                        backgroundColor: 'rgb(255, 99, 132)',-->
-<!--                        borderColor: 'rgb(255, 99, 132)',-->
-<!--                        data: [data.paket[0].paket, data.harian[0].harian, data.pengawasan[0].pengawasan, data.perencanaan[0].perencanaan]-->
-<!--                    }]-->
-<!--                },-->
-<!---->
-<!--                // Configuration options go here-->
-<!--                options: {}-->
-<!--            });-->
-<!--        }-->
-<!--});-->
-<!---->
-<!---->
-<!--								</script>-->
+									</tr>
+									</thead>
+									<tbody>
 
+									<?php
+									$id_paket=$this->db->get_where("detail_paket",array("nip"=>$this->uri->segment("3")))->result();
+
+									$count=count($id_paket);
+									$i=0;
+									//							        echo $count;
+
+									while($i<$count)
+									{
+										$data=$this->db->get_where("lap_perencanaan",array("id_paket"=>$id_paket[$i]->id_paket))->result();
+										$jumlah=count($data);
+										$j=0;
+										while($j<$jumlah)
+										{
+											?>
+											<tr>
+												<td><?php echo $data[$j]->id_lap_perencanaan; ?></td>
+												<td><?php echo $data[$j]->id_paket; ?></td>
+												<td><?php echo $data[$j]->lokasi; ?></td>
+												<td><?php echo $data[$j]->jenis_pekerjaan; ?></td>
+												<td><?php echo $data[$j]->panjang_penanganan; ?></td>
+												<td><button class="btn btn-info">Lihat</button></td>
+											</tr>
+											<?php
+
+											$j++;
+										}
+
+										$i++;
+									}
+
+									?>
+
+
+									</tbody>
+								</table>
+
+
+
+
+
+								<script>
+                                    $(document).ready(function() {
+                                        $('#example').DataTable();
+                                    } );
+								</script>
 
 
 							</div>

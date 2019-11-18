@@ -153,6 +153,8 @@ else
 									<tbody>
 									<?php
 
+//									var_dump($harian["harian"]);
+
 
 
 									$hitung=count($harian['harian']);
@@ -164,9 +166,11 @@ else
 										?>
 										<tr>
 											<td><?php echo $harian['harian'][$i]->id_lap_harian_mingguan; ?></td>
+
 											<td><button class="btn btn-info" onclick="view('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Lihat</button></td>
-											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Ubah</button></td>
+											<td><button class="btn btn-info" onclick="edit('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>','<?php echo $harian["harian"][$i]->id_lap_perencanaan; ?>')">Ubah</button></td>
 											<td><button class="btn btn-info" onclick="upload('<?php echo $harian["harian"][$i]->id_lap_harian_mingguan; ?>')">Foto</button></td>
+
 										</tr>
 									<?php
 
@@ -247,9 +251,9 @@ else
       window.location="view_harian/index/"+id;
 	}
 
-	function edit()
+	function edit(id,per)
 	{
-
+        window.location="view_harian/edit/"+id+"/"+per;
 	}
 
 	function upload(id)
