@@ -131,6 +131,8 @@ else
 	<?php $this->load->view('component/sidebar_user'); ?>
 	<?php $this->load->view('modal/add_waktu'); ?>
 	<?php $this->load->view('modal/add_alat_bahan'); ?>
+	<?php $this->load->view('modal/addPekerjaan'); ?>
+	<?php $this->load->view('modal/addBahan'); ?>
 	<!-- End of Sidebar -->
 
 	<!-- Content Wrapper -->
@@ -324,7 +326,17 @@ else
 											}
 											?>
 										</select>
-										<a href="#">New</a>
+										<a href="#" onclick="addPekerjaan()">New</a>
+										<script>
+											function addPekerjaan() {
+
+
+											    $("#addPekerjaan").modal("show");
+
+
+
+                                            }
+										</script>
 									</div>
 								</div>
 								<br/>
@@ -573,7 +585,13 @@ else
 											}
 											?>
 										</select>
-										<a href="#">New</a>
+										<a href="#" onclick="newBahan()">New</a>
+
+										<script>
+											function newBahan() {
+												$("#addBahan").modal("show");
+                                            }
+										</script>
 									</div>
 
 								</div>
@@ -694,15 +712,15 @@ else
 										<b>Informasi</b>
 										<br/>
 										<label for="">Lokasi</label>
-										<input type="text" class="form form-control" placeholder="Lokasi">
+										<input type="text" class="form form-control" placeholder="Lokasi" id="u_lokasi">
 										<label for="">Jenis Pekerjaan</label>
-										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan">
+										<input type="text" class="form form-control" placeholder="Jenis Pekerjaan" id="u_jenis_pekerjaan">
 										<label for="">Panjang Penanganan</label>
-										<input type="text" class="form form-control" placeholder="Panjang Penanganan">
+										<input type="text" class="form form-control" placeholder="Panjang Penanganan" id="u_panjang_penanganan">
 										<label for="">Keterangan Dimensi</label>
-										<input type="text" class="form form-control" placeholder="Keterangan Dimensi">
+										<input type="text" class="form form-control" placeholder="Keterangan Dimensi" id="u_keterangan_dimensi">
 										<label for="">Keterengan</label>
-										<input type="text" class="form form-control" placeholder="Keterangan">
+										<input type="text" class="form form-control" placeholder="Keterangan" id="u_keterangan">
 
 
 
@@ -1021,8 +1039,14 @@ else
     {
         let col_=$("#id_column_alat").val();
         let valuenya=$("#jumlah_alat").val();
+        let satuan=$("#alat_satuan_jesi").val();
+        let tanggal_alat=$("#tanggal_alat").val();
         alert("Sukses Ditambahkan!");
-        $("#"+col_).text(valuenya);
+
+        $("#"+col_).text(valuenya+"_"+satuan+"_"+tanggal_alat);
+        var className = $("#"+col_).attr('class');
+        $("#"+col_).removeClass("nonActive2");
+        $("#"+col_).addClass("Active2");
 
         console.log(col_);
     }
@@ -1088,6 +1112,7 @@ else
                     // console.log(data);
 
                     let max_id=data;
+                    alert(max_id);
 
                     $.ajax({
                         type : "POST",
@@ -1097,6 +1122,9 @@ else
                         dataType : "text",
                         data : {"data" : dataArray,"data1":dataArray1,"id_paket":nama_paket,"tahun":tahun_anggaran,"id_lap_perencanaan":max_id},
                         success : function(data) {
+                            console.log("&*&*&*&*");
+                            console.log(data);
+                            console.log("&*&*&*&*");
 
                             alert(data);
 
@@ -1107,9 +1135,94 @@ else
 					console.log(max_id);
 					console.log("------");
 
+                    //    Tambahkan Jenis Pekerjaan
+
+                    let dataArray2=new Array();
+                    let zx=0;
+                    $(".Active2").each(function (index, element) {
+
+                        dataArray2[zx]=$(this).text();
+                        console.log("log");
+                        zx++;
+                    });
+
+
+
+
+                    let dataArray3=new Array();
+                    let zz=0;
+                    $(".Active2").each(function (index, element) {
+
+                        dataArray3[zz]=$(this).attr("id");
+                        console.log("jes");
+                        zz++;
+                    });
+
+                    console.log(dataArray2);
+                    console.log(dataArray3);
+
+                    let nama_paket_baru=$("#nama_paket").val();
+
+                    //    Kemudian save menggunakan Ajax
+                    $.ajax({
+                        type: "POST",
+                        async:false,
+                        url: "http://localhost/pupr_new/user/perencanaan_alat",
+                        data: {"data":dataArray2,"minggu":dataArray3,"id_lap":max_id,"id_paket":nama_paket_baru,"tahun":tahun_anggaran},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                console.log(data);
+                            }
+                    });
+
+
+                //    Update Informasi Laporan Perencanaan
+					let u_lokasi=$("#u_lokasi").val();
+					let u_jenis_pekerjaan=$("#u_jenis_pekerjaan").val();
+					let u_panjang_penanganan=$("#u_panjang_penanganan").val();
+					let u_keterangan_dimensi=$("#u_keterangan_dimensi").val();
+					let u_keterangan=$("#u_keterangan").val();
+
+					let updateArray=[u_lokasi,u_jenis_pekerjaan,u_panjang_penanganan,u_keterangan_dimensi,u_keterangan];
+                    $.ajax({
+                        type: "POST",
+						async:false,
+                        url: "http://localhost/pupr_new/user/update_info",
+                        data: {"data":updateArray,"id":data},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                            console.log("jesidisini");
+                            console.log(data);
+                                alert(data);  //as a debugging message.
+                            }
+                    });
+
+                //    Ajax Untuk Menambahkan Tanda Tangan
+					let disetujui_oleh=$("#disetujui_oleh").val();
+					let diperiksa_oleh=$("#diperiksa_oleh").val();
+                    $.ajax({
+                        type: "POST",
+						async:false,
+                        url: "http://localhost/pupr_new/user/ttd_perencanaan",
+                        data: {"id_perencanaan":max_id,"disetujui_oleh":disetujui_oleh,"diperiksa_oleh":diperiksa_oleh},
+                        dataType: "text",
+                        cache:false,
+                        success:
+                            function(data){
+                                // alert(data);  //as a debugging message.
+								console.log("hmmmm");
+								console.log(data);
+								console.log("hmmmm");
+                            }
+                    });
+
                 }
             });
-            //    Tambahkan Jenis Pekerjaan
+
 
         }
 
